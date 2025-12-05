@@ -1,22 +1,44 @@
-CREATE TABLE IF NOT EXISTS MOVIES(
- NAME TEXT,
- FAV_MOVIE TEXT,
- GENRE TEXT,
- RELEASED_IN TEXT
+CREATE TABLE IF NOT EXISTS nomnom (
+    NAME TEXT,
+    NEIGHBOURHOOD TEXT,
+    CUISINE TEXT,
+    REVIEW INTEGER,
+    PRICE TEXT,
+    HEALTH TEXT
 );
 
-INSERT INTO MOVIES ( NAME, FAV_MOVIE, GENRE, RELEASED_IN) VALUES
- ('Ayaat', 'Totally Killer', 'Horror, Comedy, Sci-Fic, Thriller, Crime-Fic', 'September-28-2023'),
- ('Aleena', 'Harry Potter and The Prisoner of Azkaban', 'Comedy, Childrens film, Fantasy, Adventure', 'June-4-2004'),
- ('Ayesha', 'Harry Potter and The Philosophers Stone', 'Comedy, Childrens film, Fantasy, Adventure', 'November-16-2001'),
- ('Adiba', 'The Adam Project', 'Action, Sci-Fic, Adventure', 'March-9-2022'),
- ('Ania', 'Harry Potter and The Chamber of Secrets', 'Comedy, Childrens film, Fantasy, Adventure', 'November-3-2002'),
- ('Amira', 'M3gan', 'Horror, Sci-Fic, Thriller, Action', 'January-6-2023'),
- ('Aaria', 'Alvin and The Chipmunks', 'Musical, Comedy, Animation', 'December-14-2007');
+INSERT INTO nomnom (NAME, NEIGHBOURHOOD, CUISINE, REVIEW, PRICE, HEALTH) VALUES
+ ('Peter', 'Brooklyn', 'Steak', 4.4, '$$$$', 'A'),
+ ('Jongro', 'Midtown', 'Korean', 3.5, '$$', 'A'),
+ ('Pocha', 'Midtown', 'Pizza', 4.0, '$$$', 'B'),
+ ('Lighthouse', 'Queens', 'Chinese', 3.9, '$', 'A'),
+ ('Minca', 'Downtown', 'American', 4.6, '$$$', ''),
+ ('Marea', 'Chinatown', 'Chinese', 3.0, '$$', ''),
+ ('Dirty Candy', 'Uptown', 'Italian', 4.9, '$$$$', 'B'),
+ ('Di Fara Pizza', 'Brooklyn', 'Pizza', 3.8, '$$$', 'A'),
+ ('Golden Unicorn', 'Uptown', 'Italian', 3.8, '$$', 'A');
 
-SELECT * FROM MOVIES;
+SELECT * FROM nomnom;
 
 
-SELECT DISTINCT FAV_MOVIE FROM MOVIES;
+SELECT DISTINCT NEIGHBOURHOOD FROM nomnom;
 
+SELECT DISTINCT CUISINE FROM nomnom;
 
+SELECT * FROM nomnom
+WHERE CUISINE = 'Chinese';
+
+SELECT * FROM nomnom
+WHERE REVIEW >= 4;
+
+SELECT * FROM nomnom
+WHERE CUISINE = 'Italian' AND PRICE = '$$$';
+
+SELECT * FROM nomnom
+WHERE NAME LIKE '%Candy&';
+
+SELECT * FROM nomnom
+WHERE NEIGHBOURHOOD IN ('Midtown', 'Downtown', 'Uptown');
+
+SELECT * FROM nomnom
+ORDER BY REVIEW DESC LIMIT 4;
